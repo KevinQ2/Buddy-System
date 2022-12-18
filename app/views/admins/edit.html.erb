@@ -1,0 +1,21 @@
+<% provide(:title,"Edit Admin") %>
+<%= link_to "Back", admins_path,:class => "btn btn-primary" %>
+
+<%= render('error_admin') %>
+<div class="row text-center">
+    <div class="col">
+        <h1>Update Admin</h1>
+
+        <h3>Username: <%= @admin.username %> </h3>
+
+        <%= form_for(@admin, :url => edit_admin_path(@admin.id)) do |f| %>
+
+        <!-- Partial form with user text fields -->
+        <%= render(:partial=> 'edit_form', :locals => {:f => f}) %>
+
+
+        <%= f.submit "Update", class: "btn btn-primary" %>
+    </div>
+</div>
+<br>
+<% end %>

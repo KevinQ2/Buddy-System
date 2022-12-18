@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reporter: MyString1
+  reportee: MyString2
+  message: MyText Test Text 1
+
+two:
+  reporter: MyString3
+  reportee: MyString4
+  message: MyText Test Text 2

@@ -1,0 +1,49 @@
+.message-box {
+  max-width: 500px;
+  min-width: 30%;
+  background: #fff;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.box-medium {
+  max-width: 700px;
+  min-width: 30%;
+  overflow: auto;
+}
+
+.box-large {
+  min-width: 50%;
+  max-width: 1000px;
+  min-height: 50vh;
+  top: calc(10px + 5%);
+  bottom: 5%;
+  position: relative;
+  overflow: auto;
+}
+
+.warning-box{
+  border-radius: 10px;
+  background: crimson;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: white;
+  font-weight: bolder;
+}
+
+hr.solid {
+  border-top: 1px solid grey;
+}
+
+.message-button {
+  width: 75%;
+  white-space: nowrap;
+}

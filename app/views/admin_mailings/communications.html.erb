@@ -1,0 +1,15 @@
+<% provide(:title,"Communication") %>
+<div class="row justify-content-center text-center">
+    <div class="col-sm-6 text-center">
+        <h1>Communications</h1>
+        <br/>
+        <h3>Send emails to uploaded list from .csv file:</h3>
+        <%= link_to "Send emails to mailing list", mail_list_path, :class => "btn btn-primary" %>
+        <br/>
+        <hr/>
+        <br/>
+        <h3>Send emails to various registered users</h3>
+        <%= link_to "Send emails to various registered users", mail_users_path, :class => "btn btn-primary" %>
+        <br/>
+    </div>
+</div>

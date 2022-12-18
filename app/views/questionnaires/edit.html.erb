@@ -1,0 +1,25 @@
+<% provide(:title,"Edit Questionnaire") %>
+
+    <div class="container">
+      <h2>Edit questionnaire Details</h2>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6">
+            <h3>Current Details</h3>
+            <%= render(:partial => "show_questionnaire_details", :locals => {:questionnaire => @questionnaire}) %>
+          </div>
+          <div class="col-lg-6">
+            <h3>New Details</h3>
+            <%= form_for @questionnaire, local: true do |n| %>
+            <%= render(:partial => "edit_questionnaire_details", :locals => {:n => n}) %>
+            <%end %>
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="solid mt-3 mb-3">
+      <div class="row justify-content-center align-items-center mb-4 mt-4">
+        <%= link_to("Back to questionnaires", questionnaires_path, :class => "btn btn-secondary back-link") %>
+      </div>
+    </div>

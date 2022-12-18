@@ -1,0 +1,5 @@
+<div>
+  <h1>Reports Handled</h1>
+  <%= render "reports_table", :table => "handled" %>
+  <%= button_to "Manage Reports", reports_path, :class => "btn btn-outline-secondary my-2 my-sm-0", :method => "get" %>
+</div>

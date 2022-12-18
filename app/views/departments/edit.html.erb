@@ -1,0 +1,19 @@
+<% provide(:title,"Edit Department") %>
+<%= link_to "Back", departments_path,:class => "btn btn-primary" %>
+
+<%= render('error_department') %>
+
+<h1>Update Department</h1>
+
+<h3>Old name: <%= @department.name %> </h3>
+
+<%= form_for(@department, :url => edit_department_path(@department.id)) do |f| %>
+
+<!-- Partial form with user text fields -->
+<%= render(:partial=> 'form', :locals => {:f => f}) %>
+
+</br></br>
+
+<%= f.submit("Update") %>
+
+<% end %>

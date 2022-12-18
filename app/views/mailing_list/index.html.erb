@@ -1,0 +1,35 @@
+<% provide(:title,"Mailing List") %>
+
+<%= link_to "Clear mailing list", destroy_all_mailing_list_index_path, :method => "delete", class: "btn btn-primary" %>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addSingleEmail">
+  Add single email
+</button>
+<div class="row justify-content-center text-center">
+    <div class="col-sm-6 text-center">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @mailingList.each do |email|%>
+                <tr>
+                    <td><%= email.email %></td>
+                    <td><%= link_to "Delete", mailing_list_path(email.id), method: "delete", data: { confirm: "Do you really want to delete?" } %></td>
+                </tr>
+                <%end%>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div>
+    <!-- Import .csv file and emails from it are saved into MailingList table -->
+    <h2>Import emails here</h2>
+    <%= form_tag import_mailing_list_index_path, multipart: true do %>
+        <%= file_field_tag :file %>
+        <%= submit_tag "Import CSV" %>
+    <%end%>
+</div>
+<%= render(:partial => "/mailing_list/create") %>

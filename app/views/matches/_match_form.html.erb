@@ -1,0 +1,41 @@
+<div class="match_new">
+  <div class="container">
+
+
+
+    <div class="row pb-1">
+      <div class="col-sm-3">
+        Scheme Name:
+      </div>
+      <div class="col">
+
+          <%= f.hidden_field(:scheme_id, required: true, :value => params[:scheme_id] ) %>
+          <%= Scheme.find(params[:scheme_id]).title %>
+      </div>
+    </div>
+
+
+    <div class="row pb-1">
+      <div class="col-sm-3">
+        Mnetor Name:
+      </div>
+      <div class="col">
+
+      <%= f.hidden_field(:mentor_id, required: true, :value => $mentor.user_id)%>
+
+      </div>
+    </div>
+
+    <div class="row pb-1">
+      <div class="col-sm-3">
+        Mnetee Name:
+      </div>
+      <div class="col">
+      <%= f.hidden_field(:mentee_id, required: true, :value => $mentee.user_id) %>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

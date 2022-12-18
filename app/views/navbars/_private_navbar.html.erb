@@ -1,0 +1,44 @@
+<% master_nav = [
+  ["Admins", "admins", admins_path, "Create, edit and delete admins"],
+  ["Communications", "admin_mailings", communications_path, "Send email to mailing list or to various registered users"],
+  ["Mailing list", "mailing_list", mailing_list_index_path, "Clear or add email to mailing list"],
+  ["Coordinators", "coordinators", coordinators_path, "Assign coordinators to a scheme or remove them from a scheme"],
+  ["Departments", "departments", departments_path, "Create, edit, delete departments"],
+  ["Schemes", "schemes", schemes_path, "Create, edit and delete schemes"]
+  #["Matches", "matches", matches_path]
+]
+%>
+
+
+
+<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+<% if logged_in? %>
+  <%= link_to "Dashboard", users_path, class: "nav-item nav-link " %>
+  <%= link_to "Profile", user_profile_path(current_user.id), class: "nav-item nav-link ", title: 'Edit info, Change password', "data-toggle" => "tooltip" %>
+<% elsif admin_logged_in? %>
+  <%= link_to "Profile", admin_profile_path, class: "nav-item nav-link ", title: 'Edit info, Change password, Create scheme', "data-toggle" => "tooltip" %>
+<% end %>
+
+<% master_nav.each do |temp| %>
+  <% if has_permission(temp[1]) %>
+    <li class="nav-item">
+      <%= link_to temp[0], temp[2], class: "nav-link", title: temp[3], "data-toggle" => "tooltip" %>
+    </li>
+  <% end %>
+<% end %>
+
+<li class = "nav-item"><%= link_to "Reports", reports_path, class: "nav-item nav-link " %></li>
+
+<% if logged_in? %>
+  <%= link_to "Answers", answers_path, class: "nav-item nav-link ", title: 'View, edit questionnaire answers', "data-toggle" => "tooltip" %>
+  <% if EnrollIn.exists?(:role => "coordinator", :user_id => current_user.id) %>
+      <%= link_to "Questionnaires", questionnaires_path, class: "nav-item nav-link ", title: 'Create, edit and delete questionnaires', "data-toggle" => "tooltip" %>
+  <% end %>
+  <%= link_to "Logout", user_logout_path, method: "delete", class: "nav-item nav-link ", title: 'User Logout', "data-toggle" => "tooltip" %>
+
+<% elsif admin_logged_in? %>
+  <%= link_to "Questionnaires", questionnaires_path, class: "nav-item nav-link ", title: 'Create, edit and delete questionnaires', "data-toggle" => "tooltip" %>
+  <%= link_to "Statistic", statistics_path, class: "nav-item nav-link ", title: 'Statistics', "data-toggle" => "tooltip" %>
+  <%= link_to "Logout", admin_logout_path, method: "delete", class: "nav-item nav-link ", title: 'Admin Logout', "data-toggle" => "tooltip" %>
+<% end %>
+</ul>

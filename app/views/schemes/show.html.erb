@@ -1,0 +1,86 @@
+<% provide(:title, "Scheme") %>
+
+      <div class="container ">
+        <table class="table table-striped">
+            <tr>
+                <th scope="col">Department</th>
+                <td><%= @scheme.department.name%></td>
+            </tr>
+            <tr>
+                <th scope="col">Title</th>
+                <td><%= @scheme.title%></td>
+            </tr>
+            <tr>
+                <th scope="col">Start date</th>
+                <td><%= @scheme.startDate%></td>
+            </tr>
+            <tr>
+                <th scope="col">End date</th>
+                <td><%= @scheme.endDate%></td>
+            </tr>
+        </table>
+
+        <h4>Description</h4>
+            <p class="text-break"><%= @scheme.description %></p>
+        <div class="row m-2">
+            <div class="col-sm-12">
+                <%= link_to "Check code of conduct", scheme_path(@scheme.id)+"/codeofconduct", class: "btn btn-primary" %>
+                
+                <%= link_to "Edit scheme",  edit_scheme_path(@scheme.id), class: "btn btn-primary" %>
+                <%= link_to "Check enrolled users", show_scheme_enrolled_path(@scheme.id), class: "btn btn-primary" %>
+                <%= link_to "Check matched users", matches_path(scheme_id: @scheme.id), class: "btn btn-primary" %>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#enroll_in_links_<%=@scheme.id%>">
+                    Registration links
+                </button>
+                <%= render(:partial => "/enroll_ins/enroll_in_links", :locals => {:mentee_link=>(EnrollLink.find_by(scheme_id:@scheme.id)).mentee_link, :mentor_link=>(EnrollLink.find_by(scheme_id:@scheme.id)).mentor_link, :scheme_id => @scheme.id}) %>
+                <%= link_to "Delete Scheme", delete_scheme_path(@scheme.id), class: "btn btn-primary" %>
+                <%= link_to "Coordinators", coordinators_path(@scheme.id), class: "btn btn-primary" %>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <%=link_to "All schemes", schemes_path, class: "btn btn-primary" %>
+            </div>
+        </div>
+
+        <hr class="solid mt-3 mb-3">
+
+        <div class="row">
+            <div class="col-sm-12">
+            <h3>Matching: </h3>
+                <% if @scheme.startDate <= Date.current%>
+                    <%= link_to("Match mentors and mentees", match_mentees_to_mentors_path, :class => "btn btn-outline-dark action generate") %>
+                <% end %>
+                <%= link_to "Match manualy", new_matches_path(@scheme.id), class: "btn btn-primary" %>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-sm-8 text-center">
+                <hr class="solid mt-3 mb-3">
+                <% if @questionnaire != nil %>
+                    <%= render(:partial => 'questionnaires/show') %>
+
+                <%end %>
+            </div>
+        </div>
+
+        <hr class="solid mt-3 mb-3">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <%= link_to "Match manualy", new_matches_path(@scheme.id), class: "btn btn-primary" %>
+            </div>
+        </div>
+
+        <% if @scheme.startDate <= Date.current%>
+          <hr class="solid mt-3 mb-3">
+          <div class="row">
+              <div class="col-sm-12">
+                  <%= link_to("Match mentors and mentees", match_mentees_to_mentors_path, :class => "btn btn-outline-dark action generate") %>
+              </div>
+          </div>
+        <% end %>
+
+      </div>

@@ -1,0 +1,14 @@
+.container-background {
+  width: 100%;
+  min-height: calc(100vh - 86px);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: silver;
+  background-size: cover
+
+}

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<% provide(:title,"Admin Login") %>
+<div class="row text-center justify-content-center">
+  <div class="col-sm-3">
+    <%= bootstrap_form_with(class: 'form-signin', url: admin_login_path, scope: :session, local: true) do |f| %>
+      
+      <h2 class="h2 mb-4 font-weight-normal">Admin Area</h2>
+
+      <%= f.text_field :username, class:"form-control" %>
+      <%= f.password_field :password, class:"form-control" %>
+      <%= f.submit "Sign in", class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>

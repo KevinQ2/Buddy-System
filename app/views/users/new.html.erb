@@ -1,0 +1,14 @@
+<% provide(:title,"New User") %>
+<div class="row justify-content-center text-center">
+  <div class="col-sm-4 text-center">
+    <h1> Sign up</h1>
+    <br>
+    <%=  bootstrap_form_for(@user, :method => 'post') do |f| %>
+    <%= f.text_field :username, :readonly => true, label: "Email" %>
+      <%= render(:partial => 'form', :locals => {:f => f}) %>
+      <%= f.submit "Create User", class: 'btn btn-primary' %>
+    <% end %>
+    <br>
+    <%= link_to "Home page", "/", class: "btn btn-primary" %>
+  </div>
+</div>

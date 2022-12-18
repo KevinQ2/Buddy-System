@@ -1,0 +1,26 @@
+<% provide(:title,"Edit Coordinator") %>
+  <div class="message-box box-large">
+    <div class="container">
+      <h2>Edit Coordinator Details</h2>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6">
+            <h3>Current Details</h3>
+            <%= render(:partial => "show_coordinator_details", :locals => {:coordinator => @coordinator}) %>
+          </div>
+          <div class="col-lg-6">
+            <h3>New Details</h3>
+            <%= form_for @coordinator, url: coordinator_path, local: true do |n| %>
+            <%= render(:partial => "edit_coordinators_details", :locals => {:n => n}) %>
+            <%end %>
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="solid mt-3 mb-3">
+      <div class="row justify-content-center align-items-center mb-4 mt-4">
+        <%= link_to("Back to coordinators", coordinators_path, :class => "btn btn-secondary back-link") %>
+      </div>
+    </div>
+  </div>

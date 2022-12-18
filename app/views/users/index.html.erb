@@ -1,0 +1,47 @@
+<% provide(:title,"Dashboard") %>
+<h1> Welcome back! </h1>
+<br>
+
+<ul class="list-unstyled mb-0">
+<p>You can read more here: </p>
+    <li>
+        <%= link_to "Terms and conditions", informational_pages_path("terms_conditions"), class: "" %>
+    </li>
+    <li>
+        <%= link_to "About the project", informational_pages_path("about_project"), class: "" %>
+    </li>
+    <li>
+        <%= link_to "Experiencing problems?", informational_pages_path("problem_solving"), class: "" %>
+    </li>
+</ul>
+<br>
+
+<% if @enrolled.exists?%>
+<h3>Information about schemes you enrolled in: </h3>
+<% else %>
+<h3>Currently you are not enrolled in any schema</h3>
+<br>
+<% end %>
+<% @enrolled.each do |enroll| %>
+<hr>
+<% @scheme = Scheme.find_by(id: enroll.scheme_id) %>
+    <p>Currently you are enrolled into scheme: <b><%= @scheme.title %></b> as <b><%= enroll.role%></b></p>
+    <p>Scheme starts: <%= @scheme.startDate%></p>
+    <% if Match.find_by(mentor_id: current_user.id) %>
+        <% if enroll.role = "mentor" %>
+        <p>Your mentee/mentees is: <% @mentees = User.find_by(id: Match.find_by(mentor_id: current_user.id).mentee_id) %>
+<% @mentees.each do  |mentee| %>
+ 
+   <%= mentee.username %>         
+            
+            
+<% end %> 
+</p>
+        <% elsif enroll.role = "mentee"%>
+        <p>Your mentor is: <%= User.find_by(id: Match.find_by(mentee_id: current_user.id).mentor_id).username %></p>
+        <% end %>
+    <%end%>
+<% end %>
+
+<%= link_to "Logout", user_logout_path, method: "delete", class: 'btn btn-primary' %>
+<%= link_to "Profile", user_profile_path(params[:id]), class: "btn btn-primary " %>

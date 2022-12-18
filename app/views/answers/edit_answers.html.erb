@@ -1,0 +1,33 @@
+<% provide(:title,"Edit Answers") %>
+<%= link_to("<< Back to List", answers_path, :class => 'back-link') %>
+
+
+<div class="answers edit">
+  <h2>Update answers</h2>
+
+
+ 
+  <table summary="answer form fields">
+    <tr>
+      <th>Your answers</th>
+      <%= form_for $copied_answer, local: true  do |d| %>
+
+          <%= render(:partial => 'answers/form_edit', :locals => {:d => d}) %>
+
+
+
+
+     <div class="form-buttons">
+         <%= d.submit("Assign Answer") %>
+     </div>
+
+     <hr class="solid mt-3 mb-3">
+
+     <% end %>
+    </tr>
+
+  </table>
+
+
+
+  </div>

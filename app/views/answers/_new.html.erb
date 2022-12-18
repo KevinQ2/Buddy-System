@@ -1,0 +1,35 @@
+
+
+
+<div class="Answers new">
+
+
+      <hr class="solid mt-3 mb-3">
+      
+           
+           <div class="row pb-1">
+                <h2>Scheme Questionnaire</h2>
+                <p> Please answer this so you can enroll in a scheme, you can edit your answers later </p> 
+           </div>
+      
+      <hr class="solid mt-3 mb-3">
+      
+
+
+
+
+      <%= form_for(@answer, :method => 'post') do |d| %>
+      
+         <%= render(:partial => 'answers/form1', :locals => {:d => d}) %>
+
+
+
+
+    <div class="form-buttons">
+        <%= d.submit("Assign Answer") %>
+    </div>
+
+    <hr class="solid mt-3 mb-3">
+
+    <% end %>
+</div>

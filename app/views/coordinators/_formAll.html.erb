@@ -1,0 +1,11 @@
+<table>
+    <tr>
+      <th>Username</th>
+      <td><%= f.text_field(:user_id, required: true)%></td>
+    </tr>
+    <tr>
+      <th>Scheme Description</th>
+      <td><%= select_tag "schemes", options_from_collection_for_select(@schemes, "id", "title") %></td>
+
+    </tr>
+</table>

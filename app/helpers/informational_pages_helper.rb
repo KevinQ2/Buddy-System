@@ -1,0 +1,2 @@
+module InformationalPagesHelper
+end

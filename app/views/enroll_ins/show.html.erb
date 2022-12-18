@@ -1,0 +1,32 @@
+<% provide(:title, "Scheme") %>
+
+<div class="row justify-content-center">
+    <div class="col-sm-6 text-center">
+        <table class="table table-striped">
+            <tr>
+                <th scope="col">Scheme id</th>
+                <td><%= @enroll_in.scheme_id%></td>
+            </tr>
+            <tr>
+                <th scope="col">User id</th>
+                <td><%= @enroll_in.user_id%></td>
+            </tr>
+            <tr>
+                <th scope="col">Role</th>
+                <td><%= @enroll_in.role%></td>
+            </tr>
+            <% if @enroll_in.mentees_number %>
+                <tr>
+                    <th scope="col">Number of mentees</th>
+                    <td><%= @enroll_in.mentees_number%></td>
+                </tr>
+            <% end %>
+            
+        </table>
+        <div class="row">
+            <div class="col-sm-12">
+                <%=link_to "Schemes", schemes_path, class: "btn btn-primary" %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+
+
+<div class="container>
+
+
+        <div class="row justify-content-center align-items-center">
+          <h2>New Match</h2>
+        </div>
+
+
+
+
+    <div class = "container pt-2 pb-5">
+
+      <div class="container">
+        <div class="row">
+          <h2 class="pr-2 pr-sm-2 pr-md-2 pr-lg-2">Unmatched mentees</h2>
+        </div>
+      <% @mentees = EnrollIn.where(role: "mentee", matched: false, scheme_id: params[:scheme_id]).order(priority_score: :desc)%>
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Mnetee Name</th>
+            <th scope="col">Answers</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <% @mentees.each do |mentee| %>
+          <div class ="row">
+            <tr style="transform: rotate(0);">
+              <th id="row_number" scope="row">
+                <%= User.find(mentee.user_id).first_name%>  <%= User.find(mentee.user_id).last_name%> </th>
+              <td>
+
+
+                <% @answer = Answer.where(scheme_id: params[:scheme_id], user_id: mentee.user_id).first %>
+              <%if @answer != nil%>                               
+                <%=  @answer.user_answers%>
+              
+<%end%>  <% $mentee = mentee%>
+              </td>
+
+
+
+              <td scope="row" >
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mentor">
+                   Click to find a mentor
+               </button>
+
+
+
+
+
+
+
+              </td>
+            </tr>
+          </div>
+          <% end %>
+
+        </tbody>
+      </table>
+
+
+
+</div>
+</div>
+</div>
+<%= render(:partial => "/matches/mentor", :locals => { :scheme_id =>params[:scheme_id], :mentee_id => $mentee.user_id}) %>

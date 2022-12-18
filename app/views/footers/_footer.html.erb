@@ -1,0 +1,25 @@
+<footer class="bg-dark text-center ">
+    <div class="row">
+        <div class="container mt-10 mb-10">
+            <div class="col-lg-12">
+                <ul class="list-unstyled mb-0">
+                    <li>
+                        <%= link_to "Terms and conditions", informational_pages_path("terms_conditions"), class: "text-white" %>
+                    </li>
+                    <li>
+                        <%= link_to "About the project", informational_pages_path("about_project"), class: "text-white" %>
+                    </li>
+                    <li>
+                        <%= link_to "Experiencing problems?", informational_pages_path("problem_solving"), class: "text-white" %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="text-center bg-dark text-white">
+        Project for King's College London
+    </div>
+    <div class="text-center bg-dark text-white">
+        <%= Date.current.year%>  All Rights Reserved.
+    </div>
+</footer>

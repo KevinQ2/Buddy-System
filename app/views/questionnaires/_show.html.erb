@@ -1,0 +1,33 @@
+<% provide(:title,"Questionnaire") %>
+
+  <div class="row justify-content-center">
+    <div class="col-sm-12 text-center">
+
+      <div class="row pb-1">
+        <h2>questionnaire Details</h2>
+      </div>
+
+      <%= render(:partial => "questionnaires/"+"show_questionnaire_details", :locals => {:questionnaire => @questionnaire}) %>
+
+
+
+     <hr class="solid mt-3 mb-3">
+
+      <%= render(:partial => 'questions/index') %>
+
+      <hr class="solid mt-3 mb-3">
+
+      <div class="row justify-content-center">
+        <div class="col-sm-8 text-center">
+
+          <%= render(:partial => 'questions/new') %>
+        </div>
+      </div>
+
+      <hr class="solid mt-3 mb-3">
+
+      <div class="row justify-content-center align-items-center mb-4 mt-4">
+        <%= link_to("Back to questionnaires", questionnaires_path, :class => "btn btn-secondary back-link") %>
+      </div>
+
+  </div>

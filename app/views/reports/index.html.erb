@@ -1,0 +1,5 @@
+<div>
+  <h1>Reports</h1>
+  <%= render "reports_table", :table => "unhandled" %>
+  <%= button_to "View Handled Reports", reports_handled_path, :class => "btn btn-outline-secondary my-2 my-sm-0", :params => {:table => "handled"}, :method => "get"%>
+</div>

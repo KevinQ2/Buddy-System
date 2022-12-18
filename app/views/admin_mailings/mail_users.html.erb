@@ -1,0 +1,61 @@
+<% provide(:title,"Mailing") %>
+<div class="row">
+    <div class="col-sm-6">
+        <h1>Send emails to registered users</h1>
+        <br/>
+        <h3>Email for registered users:</h3>
+        <%= form_tag send_email_mailingusers_path, method: "get" do  %>
+            <div class="form-group">
+                <%= label_tag "Email subject" %>
+                <%= text_field_tag :subject %>
+            </div>
+            <div class="form-group">
+                <%= label_tag "Email content (HTML)" %>
+                <%= text_area_tag :content %>
+            </div>
+            <% if admin_logged_in?%>
+                <% if current_admin.scheme_access = "all schemes" %>
+                    <div class="form-group">
+                        <%= label_tag "Email users enrolled into:" %>
+                        <%= select_tag :scheme_id, options_from_collection_for_select(Scheme.all, "id", "title") %>
+                    </div>
+                <% else %>
+                    <div class="form-group">
+                        <%= label_tag "Email users enrolled into:" %>
+                        <%= select_tag :scheme_id, options_from_collection_for_select(@scheme_options, "id", "title") %>
+                    </div>
+                <% end %>
+            <% else %>
+                <div class="form-group">
+                    <%= label_tag "Email users enrolled into:" %>
+                    <select name="scheme_id" id="scheme_id">
+                    <%@enroll.each do |e|%>
+                        <% @scheme = Scheme.find_by(id: e.scheme_id) %>
+                            <option value="<%= @scheme.id %>"><%= @scheme.title%></option>
+                        <% end %>
+                    </select>
+                </div>
+            <% end%>
+            <div class="form-group">
+                <%= label_tag "Select specific users:" %>
+                <%= select_tag :role, options_for_select(@role_options) %>
+            </div>
+        <%= submit_tag "Send email",  data:  { confirm: "Do you really want to send emails?" }  %>
+        <%end%>
+        <button class="btn btn-primary" id="previewEmail">Preview email</button>
+        
+    </div>
+    <div class="col-sm-6">
+        <h1 style="width: 80%;">Content inside email will look like:</h1>
+        <div id="contentPreviewEmail" style="display:none; border-style: solid; border-width: 2px; width: 80%;">
+        </div>
+    </div>
+</div>
+<script>
+$("#previewEmail").on("click", function(){
+    var content = document.getElementById("content").value;
+    $("#contentPreviewEmail").show();
+    $("#contentPreviewEmail").empty();
+    $("#contentPreviewEmail").append(content);
+})
+</script>

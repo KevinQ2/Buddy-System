@@ -1,0 +1,21 @@
+<div>
+  <div id="main-container">
+    <div class="form-inner">
+      <h1>Submit a Report</h1>
+      <%= form_with scope: :report, url: reports_path, local: true, html: { autocomplete: "off" } do |f| %>
+      <p>
+        <%= f.label :reporter, "Your Username:" %>
+        <%= f.text_field :reporter, required: true, class: 'form-control', value:@current_user_username, :readonly => true%>
+        <% options = options_from_collection_for_select(@list, 'username', 'username') %>
+        <%= f.label :reportee, "Reportee:" %>
+        <%= f.select :reportee,  options, required: true, class: 'form-control'%>
+        <%= f.label :message, "Message:" %>
+        <%= f.text_area :message, rows: "5", class: 'form-control', :maxlength => "500", required: true, placeholder: "enter your message here..." %>
+      </p>
+      <p>
+        <%= f.submit "Submit", :class => "btn btn-outline-success my-2 my-sm-0" %>
+      </p>
+    <% end %>
+  </div>
+</div>
+</div>

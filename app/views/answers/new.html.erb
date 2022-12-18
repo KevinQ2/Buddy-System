@@ -1,0 +1,34 @@
+<% provide(:title,"New Answers") %>
+
+<div class="Answers new">
+   <div class="row pb-1">
+      <h2>Create Answer</h2>
+   </div>
+
+
+
+      <hr class="solid mt-3 mb-3">
+      
+     
+      
+      <hr class="solid mt-3 mb-3">
+      
+
+
+
+
+      <%= form_for(@answer, :method => 'post') do |d| %>
+      <div class="container">
+         <%= render(:partial => 'answers/form1', :locals => {:d => d}) %>
+
+
+
+
+    <div class="form-buttons">
+        <%= d.submit("Assign Answer") %>
+    </div>
+
+      </div>
+
+    <% end %>
+</div>

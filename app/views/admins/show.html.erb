@@ -1,0 +1,51 @@
+<% provide(:title,"Admin") %>
+<%= link_to "Back", admins_path, :class => "btn btn-primary" %>
+<div class="container">
+    <div class="row pb-1">
+        <h2>View user</h2>
+    </div>
+
+    <div class="container px-lg-2">
+        <div class="col mx-lg-n2">
+
+            <%
+              info_master = [
+                ["Username:", @admin.username],
+                ["First name:", @admin.first_name],
+                ["Last name:", @admin.last_name],
+                ["Admin access:", @admin.admin_access.join(", ")]
+              ]
+
+              if ["assigned schemes", "assigned departments and schemes"].include?(@admin.scheme_access)
+                 info_master.push(["Assigned schemes:", Scheme.where(:id => @admin.scheme_ids).map{|scheme| scheme.title}.join(", ")])
+              end
+
+              if ["assigned departments", "assigned departments and schemes"].include?(@admin.scheme_access)
+                 info_master.push(["Assigned departments:", Department.where(:id => @admin.department_ids).map{|department| department.name}.join(", ")])
+              end
+
+              info_master.push(["Created at:", @admin.created_at])
+              info_master.push(["Updated at:", @admin.updated_at])
+            %>
+
+            <% info_master.each do |info| %>
+              <div class="row">
+                <%= info[0] %>
+              </div>
+              <div class="row pb-2 font-weight-bold">
+                <%= info[1] %>
+              </div>
+            <% end %>
+
+            <hr class="solid mt-3 mb-3">
+            <a href="<%= new_scheme_path %>"><button type="button">Create Scheme</button></a>
+
+
+            <div class="col-md-3">
+                <div class="row justify-content-center">
+                    <%= link_to "Log out", logout_path, :class => "btn btn-primary message-button my-2 my-sm-0 button-font-size action delete" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<% provide(:title, "New Scheme") %>
+
+        <div class="container ">
+
+
+                  <div class="row justify-content-center align-items-center">
+                    <h2>Create Scheme</h2>
+                  </div>
+
+<div class="text-center mt-5">
+    <%= form_for @scheme, url: schemes_path do |s| %>
+    <div class="form-group">
+        <%= s.label :department_id %>
+        <%= s.collection_select(:department_id, Department.all, :id, :name) %>
+    </div>
+
+    <div class="form-group">
+        <%= s.label :title %>
+        <%= s.text_field :title %>
+    </div>
+
+    <div class="form-group">
+        <%= s.label :description %>
+        <%= s.text_area :description, :style => "resize: both; width: 20%; height: 70px;"  %>
+    </div>
+
+    <div class="form-group">
+        <%= s.label "Start date" %>
+        <%= s.date_select :startDate, "data-provide" => 'datepicker', :start_year => Date.today.year %>
+    </div>
+
+    <div class="form-group">
+        <%= s.label "End date" %>
+        <%= s.date_select :endDate, "data-provide" => 'datepicker' %>
+    </div>
+
+    <div class="form-group">
+        <%= s.label "Code of Conduct"%>
+        <%= s.text_area :codeOfConduct, :style => "resize: both; width: 40%; height: 150px;" %>
+    </div>
+
+    <%= s.submit "Create scheme", class: "btn btn-outline-success" %>
+    <%end%>
+    <br>
+    <%= link_to "All schemes", schemes_path, class: "btn btn-primary mt-10" %>
+    <br>
+</div>
+</div>

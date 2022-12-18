@@ -1,0 +1,46 @@
+
+
+<div class="questionnaires_new">
+
+    <div class="row pb-1">
+      <h2>New Questionnaire</h2>
+    </div>
+    <%if @scheme!= nil%>
+       <%= f.hidden_field(:scheme_id, required: true, :value => @scheme.id ) %>
+    <% else %>
+    <div class="row pb-1">
+      <div class="col-sm-3">
+
+        Connect to Scheme:
+      </div>
+      <div class="col">
+        <% @schemes = Scheme.where(has_questionnaire: nil) %>
+       <%= f.select(:scheme_id, @schemes.all.collect { |scheme| [scheme.title, scheme.id]} , selected: params[:id], required: true)%>
+      </div>
+    </div>
+
+
+    <%end%>
+    <div class="row pb-1">
+      <div class="col-sm-3">
+
+        Questionnaire Name:
+      </div>
+      <div class="col">
+        <%= f.text_field(:name, required: true ) %>
+      </div>
+    </div>
+
+    <div class="row pb-1">
+      <div class="col-sm-3">
+        Questionnaire description:
+      </div>
+      <div class="col">
+        <%= f.text_area(:description, required: true)%>
+      </div>
+    </div>
+
+
+
+
+  </div>

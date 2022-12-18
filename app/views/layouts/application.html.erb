@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag "application", media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag "application", 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag 'auth_messages', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'backgrounds', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+  <!-- Notifications -->
+  <% flash.each do |type, msg| %>
+    <div id="flash" class="text-center alert-info alert alert-<%= type %>">
+        <%= msg%>
+    </div>
+  <% end %>
+  <!-- END Notifications -->
+
+  <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light text-center">
+      <a class="navbar-brand ml-20" href="/">
+        <!-- LOGO IF ANY -->
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse mr-60" id="navbarToggler">
+        <div class="ml-auto">
+        <!-- Depends on implementation of sessions + if we decide using namespaces-->
+          <% if logged_in? || admin_logged_in? %>
+            <%= render "navbars/private_navbar" %>
+          <% else %>
+            <%= render "navbars/public_navbar"%>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+  <!-- END Navigation -->
+
+  <!-- Main content -->
+
+  <div class="container-background">
+        <div class="message-box box-large">
+          <div class="container ">
+
+          <%= yield %>
+          </div>
+        </div>
+
+  </div>
+
+
+  <!-- END Main content -->
+
+
+  <!-- Footer-->
+    <%= render "footers/footer" %>
+  <!-- END Footer-->
+  </body>
+</html>

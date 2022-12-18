@@ -1,0 +1,25 @@
+<% provide(:title,"Delete Coordinator") %>
+
+  <div class="message-box">
+    <div class="row justify-content-center align-items-center">
+      <h2>Delete coordinator</h2>
+    </div>
+
+    <hr class="solid">
+    <div class="container px-lg-2 pt-2">
+      <%= render(:partial => 'show_coordinator_details', :locals => {:coordinator => @coordinator}) %>
+
+      <p class="text-danger pt-2" align="center">Warning: This action cannot be undone!</p>
+      <div class="row justify-content-center align-items-center">
+        <div class="form-buttons p-2" align ="center">
+          <%= form_for(@coordinator, :method => 'delete') do |f| %>
+          <%= f.submit "Delete coordinator", class:'btn btn-danger'%>
+        </div>
+
+        <div class="form-buttons p-2" align ="center">
+          <%= link_to("Cancel", coordinators_path, :class => "btn btn-secondary") %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>

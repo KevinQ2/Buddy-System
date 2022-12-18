@@ -1,0 +1,21 @@
+<% provide(:title,"New Department") %>
+<%= link_to "Back", departments_path, :class => "btn btn-primary" %>
+
+</br>
+
+<%= render('error_department') %>
+
+<h1>New Department</h1>
+
+<!-- The form for making a new user -->
+<%= form_for(@department, :url => new_department_path, :method => 'post') do |f| %>
+
+<!-- Partial form with input fields -->
+<%= render(:partial=> 'form', :locals => {:f => f}) %>
+
+
+</br></br>
+
+<%= f.submit("Create Department") %>
+
+<% end %>

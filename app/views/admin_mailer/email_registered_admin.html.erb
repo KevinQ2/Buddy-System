@@ -1,0 +1,9 @@
+<h1 style="text-align: center">Dear <%= @admin.first_name %>, </h1>
+<p style="text-align:justify;">You have been registered on KCL Buddy Scheme </p>
+<br>
+<a style="text-align:center;">You can login here: <%= @loginUrl%></p>
+<p style="text-align:center;">Your login credentials are:</p>
+<p style="text-align:center;">Username: <%=@admin.username%></p>
+<p style="text-align:center;">Password: <%=@admin.password%></p>
+<br>
+<p style="color:red;text-align:center;">Please change your password after your first login</p>

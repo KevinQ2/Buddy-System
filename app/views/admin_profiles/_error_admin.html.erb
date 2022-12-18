@@ -1,0 +1,11 @@
+<!-- Check for errors -->
+<% if @admin.errors.any? %>
+  <p>The form contains <%= pluralize(@admin.errors.count, "error") %></p>
+
+  <ul>
+      <% @admin.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+      <% end %>
+  </ul>
+
+<% end %>

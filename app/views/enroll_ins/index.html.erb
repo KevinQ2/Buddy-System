@@ -1,0 +1,28 @@
+<% provide(:title,"Enrolled users") %>
+ <div class="container ">
+        <h1> Welcome to enrolled users page</h1>
+        <table class="table table-hover table-striped">
+	    <thead>
+            <tr>
+                <th>User id</th>
+                <th>Role</th>
+                <th>Scheme id</th>
+                <th>Number of mentees</th>
+            </tr>
+            </thead>
+            <% @enroll_in.each do |e| %>
+            <tr  style="transform: rotate(0);">
+                <td><%= e.user_id %></td>
+                <td><%= e.role %></td>
+                <td><%= e.scheme_id %></td>
+                <% if e.mentees_number%>
+                <td><%= e.mentees_number %></td>
+                <% else %>
+                <td><%= "None" %></td>
+                <% end %>
+                <td><%= link_to "Check user", enroll_in_path(e.id), class: "btn btn-primary" %></td>
+            </tr>
+            <%end%>
+        </table>
+    </div>
+

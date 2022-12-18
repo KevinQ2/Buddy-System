@@ -1,0 +1,15 @@
+<% provide(:title,"Profile") %>
+<h1>Profile Information</h1>
+
+<h3>Email: <%= @user.username %> </h3>
+<h3>First name: <%= @user.first_name %> </h3>
+<h3>Last name: <%= @user.last_name %> </h3>
+<h3>Created at: <%= @user.created_at %> </h3>
+<h3>Last updated: <%= @user.updated_at %> </h3>
+
+
+<%= link_to "Edit info", edit_user_profile_path, class: "btn btn-primary" %>
+<%= link_to "Change password", user_profile_change_password_path, class: "btn btn-primary" %>
+
+
+<%= link_to "Logout", user_logout_path, method: "delete", class: 'btn btn-secondary' %>

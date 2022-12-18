@@ -1,0 +1,32 @@
+<label>Search by:</label>
+
+<input id="tableSearch" type="text" placeholder="Search..">
+
+<table class="table table-striped reports-table" id="reportsTable">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" class="id-col">#</th>
+      <th scope="col" class="username-col">Reporter</th>
+      <th scope="col" class="username-col">Reportee</th>
+      <th class="message-col" scope="col">Message</th>
+      <th scope="col" class="show-col"></th>
+      <th scope="col" class="delete-col"></th>
+
+    </tr>
+  </thead>
+  <tbody id="reportsTableContents">
+  <% @reports.each do |report| %>
+    <tr>
+      <td style="overflow: hidden; text-overflow: ellipsis"><%= report.id %></td>
+      <td style="overflow: hidden; text-overflow: ellipsis"><%= User.find(report.reporter_id).username %></td>
+      <td style="overflow: hidden; text-overflow: ellipsis"><%= User.find(report.reportee_id).username%></td>
+      <td style="overflow: hidden; text-overflow: ellipsis"><%= report.message %></td>
+      <td style="overflow: hidden; text-overflow: ellipsis"><%= button_to("Show", report_path(report.id), :params => {:id => report.id, :table => status(report)}, :class => "btn btn-outline-info my-2 my-sm-0", :method => "get") %></td>
+      <% if report.handled == true %>
+      <td style="overflow: hidden; text-overflow: ellipsis"><%= button_to("Delete", report_path(report.id), :params => {:id => report.id}, :class => "btn btn-outline-danger my-2 my-sm-0" , :method => "delete")%></td>
+      <% end %>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>

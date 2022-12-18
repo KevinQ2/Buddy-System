@@ -1,0 +1,19 @@
+<div class="modal fade" id="enroll_in_mailing" tabindex="-1" role="dialog" aria-labelledby="enroll_in_mailingLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="enroll_in_mailingLabel">Enroll in registration links: </h5>
+      </div>
+      <div class="modal-body">
+        <p>Total number of  <%= @roleName %> imported: <%= EnrollInMailing.count %> </p>
+        <%= link_to "Clear enroll mailing list", destroy_all_enroll_in_mailings_path, :method => "delete", class: "btn btn-primary" %>
+        <h2>Import emails here</h2>
+        <%= form_tag import_enroll_in_mailings_path,:method=>"post", multipart: true do %>
+            <%= file_field_tag :file %>
+            <%= submit_tag "Import CSV" %>
+        <%end%>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

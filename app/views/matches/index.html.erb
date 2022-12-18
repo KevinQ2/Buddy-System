@@ -1,0 +1,62 @@
+
+<head>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+</head>
+
+
+
+    <div class="container">
+      <div class="row">
+        <h2 class="pr-2 pr-sm-2 pr-md-2 pr-lg-2">matches</h2>
+      </div>
+      <div class="row pb-3">
+        <%= link_to("Go to schemes", schemes_path, :method => "get", :class => "btn btn-outline-dark action new") %>
+      </div>
+
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Scheme</th>
+            <th scope="col">Mentor</th>
+            <th scope="col">Mentee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @matches.each do |match| %>
+          <div class ="row" style="transform: rotate(0);">
+            <tr >
+              <th id="row_number" scope="row"> <%= match.created_at%> </th>
+              <td>
+
+                <%= Scheme.find(match.scheme_id).title%>
+
+              </td>
+              <td>
+
+                <%= match.mentor.first_name  %> <%=  match.mentor.last_name %>
+
+              </td>
+              <td>
+                <%= match.mentee.first_name %> <%= match.mentee.last_name %>
+              </td>
+
+              <td scope="row" >
+                <%= link_to(match_path(match), class: "stretched-link action show")do %>
+
+                <span data-toggle="tooltip" data-placement="top" title="Show">
+                  <i class="fas fa-search"></i>
+                </span>
+                <%end %>
+
+
+              </td>
+            </tr>
+          </div>
+          <% end %>
+        </tbody>
+      </table>
+    </div>

@@ -1,0 +1,17 @@
+<% provide(:title,"Delete Question") %>
+<%= link_to("<<Back to List", questions_path, :class => 'back-link') %>
+
+<div class="questions delete">
+    <h2>Delete Question</h2>
+
+    <%= form_for(@question, :url => question_path(@question), :method => 'delete') do |f| %>
+
+
+    <p>Are you sure you want to permanently delete theis question?</p>
+    <p><%= @question.description %></p>
+
+    <div class="form-buttons">
+      <%= f.submit("Delete Question") %>
+    </div>
+    <% end %>
+</div>

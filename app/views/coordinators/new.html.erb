@@ -1,0 +1,31 @@
+
+
+<div class="coordinator new">
+   <div class="row pb-1">
+      <h2>Create Coordinator</h2>
+   </div>
+
+
+
+         <%= form_for(@coordinator, url: new_coordinator_path, :method => 'post') do |f| %>
+      <div class="container">
+
+        <%= render(:partial => 'coordinators/formAll', :locals => {:f => f}) %>
+
+
+    <div class="form-buttons">
+        <%= f.submit("Assign Coordinator") %>
+    </div>
+
+      </div>
+
+    <% end %>
+
+
+
+
+
+
+
+
+</div>

@@ -1,0 +1,41 @@
+<div class="schemes_show">
+  <div class="container">
+
+    <div class="container px-lg-2">
+      <div class="col mx-lg-n2">
+
+
+        <div class="row">
+          Date:
+        </div>
+        <div class="row pb-2 font-weight-bold">
+          <%= @scheme.created_at %>
+        </div>
+        <div class="row pb-2 font-weight-bold">
+
+          <%= @scheme.department.name %>
+
+        </div>
+        <div class="row">
+          Scheme Name:
+        </div>
+        <div class="row pb-2 font-weight-bold">
+
+          <%= @scheme.title %>
+
+        </div>
+        <div class="row">
+          Scheme Description:
+        </div>
+        <div class="row pb-2 font-weight-bold">
+
+          <%= @scheme.description %>
+
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<% provide(:title,"Mailing") %>
+<div class="row">
+    <div class="col-sm-6">
+        <h1>Send emails to mailing list (imported by super-admin)</h1>
+        <br/>
+        <h3>Currently emails in mailing list: <%=@numberOfEmails%></h3>
+        <h3>Emails for mailing list</h3>
+        <%= form_tag send_email_mailinglist_path, method: "get" do  %>
+            <div class="form-group">
+                <%= label_tag "Email subject" %>
+                <%= text_field_tag :subject %>
+            </div>
+            <div class="form-group">
+                <%= label_tag "Email content (HTML)" %>
+                <%= text_area_tag :content %>
+            </div>
+            <%= submit_tag "Send email",  data:  { confirm: "Do you really want to send emails?" } %>
+        <%end%>
+        <button class="btn btn-primary" id="previewEmail">Preview email</button>
+    </div>
+    <div class="col-sm-6">
+        <h1 style="width: 80%;">Content inside email will look like:</h1>
+        <div id="contentPreviewEmail" style="display:none; border-style: solid; border-width: 2px; width: 80%;">
+        </div>
+    </div>
+</div>
+<script>
+$("#previewEmail").on("click", function(){
+    var content = document.getElementById("content").value;
+    $("#contentPreviewEmail").show();
+    $("#contentPreviewEmail").empty();
+    $("#contentPreviewEmail").append(content);
+})
+</script>

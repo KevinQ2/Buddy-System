@@ -1,0 +1,43 @@
+<% provide(:title, "Edit Scheme") %>
+
+        <div class="container ">
+<div class="text-center mt-5">
+    <%= form_for @scheme, url: scheme_path do |s| %>
+    <div class="form-group">
+        <%= s.label :department_id %>
+        <%= s.collection_select(:department_id, Department.all, :id, :name) %>
+    </div>
+    <div class="form-group">
+        <%= s.label :title %>
+        <%= s.text_field :title %>
+    </div>
+
+    <div class="form-group">
+        <%= s.label :description %>
+        <%= s.text_field :description %>
+    </div>
+
+    <div class="form-group">
+        <%= s.label "Start date" %>
+        <%= s.date_select :startDate, "data-provide" => 'datepicker' %>
+    </div>
+
+    <div class="form-group">
+        <%= s.label "End date" %>
+        <%= s.date_select :endDate, "data-provide" => 'datepicker'  %>
+    </div>
+
+    <div class="form-group">
+        <%= s.label "Code of Conduct"%>
+        <%= s.text_area :codeOfConduct, :style => "resize: both; width: 40%; height: 150px;" %>
+    </div>
+
+    <%= s.submit "Update scheme", class: "btn btn-outline-success" %>
+    <%end%>
+    <br>
+    <%=link_to "All schemes", schemes_path, class: "btn btn-primary" %>
+</div>
+
+
+
+</div>

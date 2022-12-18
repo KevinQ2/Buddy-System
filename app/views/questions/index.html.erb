@@ -1,0 +1,57 @@
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+</style>
+<% provide(:title,"Questions") %>
+<div class="row justify-content-center text-center">
+  <div class="col-sm-6 text-center">
+    <h1>Questions</h1>
+
+      <p>Please create questions for your questionnaire.</p>
+
+      <div class="questions index">
+        <div style="text-align:center">
+        
+        </div>
+      </div>
+
+    <h2>Questions</h2>
+
+    <div class="container">
+
+      <% @questions.each do |question| %>
+        <div class ="card"> 
+          <div class = "card-header">
+              <%= question.id %> 
+          
+          </div>
+          
+          <div class = "card-body">
+              <p class = "card-text"> <%= question.description %>?
+              
+              <br />
+              
+              <%= select_tag "question.optisons", options_for_select(question.options) %>
+          
+          </div>
+      
+        </div>
+      <br />
+      
+      <% end %>
+    </div>
+  </div>
+</div>

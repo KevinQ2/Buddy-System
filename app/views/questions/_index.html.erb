@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<style>
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+  <h1>Questions</h1>
+
+    <p>Please create questions for your questionnaire.</p>
+
+    <div class="questions index">
+    <div style="text-align:center">
+
+
+    </div>
+
+<h2>Questions</h2>
+
+<div class="container">
+
+  <% @questions.each do |question| %>
+  <div class ="card">
+       <div class = "card-header">
+
+           <div class = "alignright">
+
+                 
+
+                <%= link_to(edit_question_path(question), :class => "action edit icon-position") do %>
+                <span data-toggle="tooltip" data-placement="top" title="Edit">
+                  <i class="far fa-edit"></i>
+                </span>
+                <% end %>
+                <%= link_to(delete_question_path(question), :class => "action delete icon-position") do %>
+                <span data-toggle="tooltip" data-placement="top" title="Delete">
+                  <i class="far fa-trash-alt"></i>
+                </span>
+                <% end %>
+
+
+
+
+
+
+           </div>
+
+       </div>
+
+       <div class = "card-body">
+           <p class = "card-text"> <%= question.description %>?
+
+           <br />
+
+           <%= select_tag "question.optisons", options_for_select(question.options) %>
+
+
+
+       </div>
+
+  </div>
+  <br />
+
+  <% end %>
+

@@ -1,0 +1,116 @@
+
+
+<head>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+</head>
+<body>
+<% provide(:title,"Questionnaires") %>
+
+        <div class="container ">
+          <div class="row">
+            <h2 class="pr-2 pr-sm-2 pr-md-2 pr-lg-2">Questionnaires</h2>
+          </div>
+          <div class="row pb-3">
+            <%= link_to("New questionnaire", new_questionnaire_path, :method => "get", :class => "btn btn-outline-dark action new") %>
+          </div>
+          <div class="row pb-3">
+
+
+          </div>
+
+
+          <table class="table table-hover table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Name</th>
+                <th scope="col">Questions Number </th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <% @questionnaires.each do |questionnaire| %>
+              <div class ="row">
+                <tr style="transform: rotate(0);">
+                  <th id="row_number" scope="row"> <%= questionnaire.updated_at%> </th>
+                  <td>
+
+                    <%= questionnaire.name %>
+
+                  </td>
+                  <td>
+
+
+                   <%= questionnaire.description %>
+
+
+                  </td>
+
+
+                  <td scope="row" >
+                    <%
+                      has_permission = false
+
+                      if admin_logged_in?
+                        case current_admin.scheme_access
+                        when "no schemes"
+                          has_permission = false
+                        when "assigned schemes"
+                          has_permission = current_admin.scheme_ids.include?(questionnaire.scheme_id)
+                        when "assigned departments"
+                          has_permission = current_admin.department_ids.include?(questionnaire.scheme.department_id)
+                        when "assigned departments and schemes"
+                          if current_admin.scheme_ids.include?(questionnaire.scheme_id)
+                            has_permission = true
+                          else
+                            has_permission = current_admin.department_ids.include?(questionnaire.scheme.department_id)
+                          end
+                        when "all schemes"
+                          has_permission = true
+                        end
+                      elsif logged_in?
+                        has_permission = EnrollIn.exists?(:user_id => current_user.id, :scheme_id => questionnaire.scheme_id)
+                      end
+                    %>
+
+                    <% if has_permission %>
+                      <%= link_to(questionnaire_path(questionnaire), class: "stretched-link action show")do %>
+                      <span data-toggle="tooltip" data-placement="top" title="Show">
+                        <i class="fas fa-search"></i>
+                      </span>
+                      <%end %>
+
+                      <%= link_to(edit_questionnaire_path(questionnaire), :class => "action edit icon-position") do %>
+                      <span data-toggle="tooltip" data-placement="top" title="Edit">
+                        <i class="far fa-edit"></i>
+                      </span>
+                      <% end %>
+
+                      <%= link_to(delete_questionnaire_path(questionnaire), :class => "action delete icon-position") do %>
+                      <span data-toggle="tooltip" data-placement="top" title="Delete">
+                        <i class="far fa-trash-alt"></i>
+                      </span>
+                      <% end %>
+                    <% end %>
+
+                    <%= link_to(copy_questionnaire_path(questionnaire), :class => "action copy icon-position") do %>
+                    <span data-toggle="tooltip" data-placement="top" title="Copy to use">
+                      <i class="fas fa-copy"></i>
+                    </span>
+                    <% end %>
+
+
+
+                  </td>
+                </tr>
+              </div>
+              <% end %>
+
+            </tbody>
+          </table>
+        </div>
+
+   </body>

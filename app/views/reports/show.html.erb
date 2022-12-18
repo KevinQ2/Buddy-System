@@ -1,0 +1,31 @@
+
+<div>
+  <div id="main-container">
+    <div class="form-inner">
+        <div>
+          <div id="main-container">
+            <div class="form-inner">
+              <h1>Report ID: <span id="id"><%= @report_to_show.id %></span> </h1><br>
+              <p>status: <%= @report_table %></p><br>
+
+
+
+                  <h5>Reporter:</h5>
+                  <input class="form-control" readonly="readonly" type="text" value=<%=User.find(@report_to_show.reporter_id).username%>></input>
+                  <h5>Reportee:</h5>
+                  <input class="form-control" readonly="readonly" type="text" value=<%=User.find(@report_to_show.reportee_id).username%>></input>
+                  <h5>Message:</h5>
+                  <textarea class="form-control" readonly="readonly" rows="10" cols="100"><%=@report_to_show.message%></textarea>
+                  <%= button_to(@button, report_path(@report_to_show.id), :params => {:id => @report_to_show.id}, :class => "btn btn-outline-danger my-2 my-sm-0" , :method => "patch") %>
+                  <%= button_to("Back", @backlink, :class => "btn btn-outline-secondary my-2 my-sm-0", :method => "get") %>
+                  
+
+            </div>
+          </div>
+        </div>
+          <% if @report_to_show.handled == true %>
+            <%= button_to("Delete", report_path(@report_to_show.id), :params => {:id => @report_to_show.id}, :class => "btn btn-outline-danger my-2 my-sm-0" , :method => "delete")%>
+          <% end %>
+        </div>
+        </div>
+        </div>

@@ -1,0 +1,24 @@
+<% provide(:title,"New Admin") %>
+<%= link_to "Back", admins_path, :class => "btn btn-primary" %>
+
+</br>
+<div class="row text-center">
+    <div class="col">
+        <%= render('error_admin') %>
+
+        <h1>New Admin User</h1>
+
+        <!-- The form for making a new user -->
+        <%= form_for(@admin, :url => new_admin_path, :method => 'post') do |f| %>
+
+        <!-- Partial form with input fields -->
+        <%= render(:partial=> 'new_form', :locals => {:f => f}) %>
+    </div>
+</div>
+<div class="row text-center">
+    <div class="col">
+        <%= f.submit "Create Admin", class: "btn btn-primary"%>
+    </div>
+</div>
+<br>
+<% end %>

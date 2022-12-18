@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+superadmin:
+  username: bob.builder@kcl.ac.uk
+  password_digest: <%= BCrypt::Password.create('mypassword') %>
+  first_name: bob
+  last_name: builder
+  admin_access: [admins, coordinators, departments, matches, admin_mailings, mailing_list]
+  scheme_access: all schemes
+  department_ids: []
+  scheme_ids: []
+
+averageadmin:
+  username: richard.johnson@kcl.ac.uk
+  password_digest: <%= BCrypt::Password.create('mypassword') %>
+  first_name: richard
+  last_name: johnson
+  admin_access: []
+  scheme_access: no schemes
+  department_ids: [1]
+  scheme_ids: [1, 2]

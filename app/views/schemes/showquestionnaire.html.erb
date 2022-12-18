@@ -1,0 +1,13 @@
+<% provide(:title, "Questionnaire") %>
+
+        <div class="container ">
+        <h1>Questionnaire</h1>
+        <% @questionnaire = Questionnaire.where(scheme_id: @scheme.id) %>
+
+        <p><%= @questionnaire.name %></p>
+        <div class="row">
+            <div class="col-sm-12">
+                <%=link_to "All schemes", scheme_index_path, class: "btn btn-primary" %>
+            </div>
+        </div>
+    </div>

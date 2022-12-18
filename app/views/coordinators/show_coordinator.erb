@@ -1,0 +1,38 @@
+<% provide(:title,"Coordinator") %>
+
+  <div class="message-box box-medium">
+    <div class="container">
+
+      <div class="row pb-1">
+        <h2>Coordinator Details</h2>
+      </div>
+
+      <%= render(:partial => "coordinators/"+"show_coordinator_details", :locals => {:coordinator => @coordinator}) %>
+
+
+
+     <hr class="solid mt-3 mb-3">
+
+      <%= render(:partial => 'coordinators/index') %>
+
+      <hr class="solid mt-3 mb-3">
+
+      <div class="container">
+
+    <%= render(:partial => 'coordinators/new') %>
+
+
+<div>
+
+
+      <hr class="solid mt-3 mb-3">
+
+
+
+      <div class="row justify-content-center align-items-center mb-4 mt-4">
+        <%= link_to("Back to coordinators", coordinators_path, :class => "btn btn-secondary back-link") %>
+      </div>
+
+    </div>
+  </div>
+</div>

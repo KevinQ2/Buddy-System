@@ -1,0 +1,69 @@
+<% provide(:title,"Edit Questions") %>
+
+
+<div class="questions edit">
+  <h2>Update Questions</h2>
+
+
+  <%= form_for(@question, :url => question_path(@question), :method => 'patch') do |f| %>
+
+  <table summary="Question form fields">
+    <tr>
+      <th>Description</th>
+      <td><%= f.text_field(:description) %></td>
+    </tr>
+
+    <tr>
+      <th>Options
+      <div id="tooltip">
+                <img src="https://friconix.com/png/fi-ctluxx-exclamation-mark-rounded.png", style="width:15px;height:16px;"> </img>
+                
+            <span id="tooltiptext"> Please add comma before and after each option. Example => [, Option1 , Option2 ,] </span> </div> 
+      
+      
+      </th>
+      <td><%= f.text_field(:options) %></td>
+    </tr>
+
+    <tr>
+      <th>Match
+      <div id="tooltip">
+                <img src="https://friconix.com/png/fi-ctluxx-exclamation-mark-rounded.png", style="width:15px;height:16px;"> </img>
+                
+            <span id="tooltiptext">If you tick this box,matched with others who have same answer as them - Please do not tick it if you want to give the choice to users.</span> </div> 
+     
+</th> 
+      <td><%= f.check_box(:match)%></td>
+    </tr>
+   
+    <tr>
+      <th>Matching up to user <div id="tooltip">
+                <img src="https://friconix.com/png/fi-ctluxx-exclamation-mark-rounded.png", style="width:15px;height:16px;"> </img>
+                
+            <span id="tooltiptext">If you tick this box, users will be able to decide if they want to be matched with others who have same answer as them. </span> </div> </th> 
+      <td><%= f.check_box(:matching_up_to_user)%></td>  
+     
+       
+    </tr>
+
+    <tr>
+      <th>Give priority
+      
+      <div id="tooltip">
+                <img src="https://friconix.com/png/fi-ctluxx-exclamation-mark-rounded.png", style="width:15px;height:16px;"> </img>
+                
+            <span id="tooltiptext"> If you tick this box, users who answer this question with "true" will be prioritize in the matching process </span> </div> 
+      
+      
+      </th>
+      <td><%= f.check_box(:give_priority)%></td>
+  </table>
+
+  <hr class="solid mt-3 mb-3">
+  <div class="form-buttons">
+    <%= f.submit("Update Question") %>
+  </div>
+
+  <% end %>
+
+  </div>

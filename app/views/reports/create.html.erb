@@ -1,0 +1,17 @@
+<div>
+  <div id="main-container">
+    <div class="form-inner">
+      <h3>
+        <span style="color: #666" id="username"><%=User.find(@report.reporter_id).username%></span>, your Report was submitted successfully
+        <span id="tick">✓</span></h3><br>
+      <h3>ReportID:
+        <span id="id">
+          <%=@report.id %>
+        </span>
+      </h3>
+      <br>
+      <!-- INSERT DATA INTO DATABASE VIA CONTROLLER, THEN RETURN REPORT ID AS STORED IN DATABASE -->
+      <%= button_to "OK", reports_path, :class => "btn btn-outline-secondary my-2 my-sm-0", :method => "get" %>
+    </div>
+  </div>
+</div>

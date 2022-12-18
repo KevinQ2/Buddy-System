@@ -1,0 +1,35 @@
+<% provide(:title,"Show user") %>
+<div class="row justify-content-center text-center">
+    <div class="col-sm-6 text-center">
+        <h1> These are the users enrolled for scheme:</h1>
+        <h2>Title: <%= @scheme.title %> </h2>
+        <h2>Id: <%= @scheme.id  %> </h2>
+        <table class="table">
+
+            <tr>
+                <th>User id</th>
+                <th>Role</th>
+                <th>Number of mentees</th>
+            </tr>
+            <% @enroll_in.each do |e| %>
+            <tr>
+                <td><%= e.user_id %></td>
+                <td><%= e.role %></td>
+                <% if e.mentees_number%>
+                    <td><%= e.mentees_number %></td>
+                <% else %>
+                    <td><%= "None" %></td>
+                <% end %>
+                <td><%= link_to "Check user", enroll_in_path(e.id), class: "btn btn-primary" %></td>
+            </tr>
+            <%end%>
+        </table>
+        <div class="row m-2">
+            <div class="col-sm-12">
+                <%= link_to "Check code of conduct", scheme_path(@scheme.id)+"/codeofconduct", class: "btn btn-primary" %>
+                <%= link_to "Check questionnaire","/showquestionnaire", class: "btn btn-primary" %>
+                <%= link_to "Edit scheme",  edit_scheme_path(@scheme.id), class: "btn btn-primary" %>
+            </div>
+        </div>
+    </div>
+</div>

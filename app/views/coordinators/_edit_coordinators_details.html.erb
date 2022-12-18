@@ -1,0 +1,31 @@
+
+<div class="coordinators_new">
+  <div class="container">
+
+    <div class="row pb-1">
+      <div class="col-sm-3">
+        Enrollment Role:
+      </div>
+      <div class="col">
+        <%= n.text_field(:role, required: true) %>
+      </div>
+    </div>
+
+    <div class="row pb-1">
+      <div class="col-sm-3">
+        User ID:
+      </div>
+      <div class="col">
+        <%= n.text_field(:user_id, required: true)%>
+      </div>
+    </div>
+
+
+
+    <div class="row justify-content-center align-items-center">
+      <div class="form-buttons p-2" align="center">
+        <%= n.submit("Update", class:"btn btn-success") %>
+      </div>
+    </div>
+  </div>
+</div>

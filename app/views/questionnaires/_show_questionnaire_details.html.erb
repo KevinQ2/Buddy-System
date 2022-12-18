@@ -1,0 +1,48 @@
+<div class="questionnaires_show">
+  <div class="container">
+
+    <div class="container px-lg-2">
+      <div class="col mx-lg-n2">
+
+
+        <div class="row">
+          Date:
+        </div>
+        <div class="row pb-2 font-weight-bold">
+          <%= @questionnaire.created_at %>
+        </div>
+
+        <div class="row">
+          Scheme:
+        </div>
+        <div class="row pb-2 font-weight-bold">
+          <% if @questionnaire.scheme_id != nil%>
+             <%= Scheme.find(@questionnaire.scheme_id).title %>
+          <% else %>
+            <p> This questionnaire is not connected to any scheme. </p>
+          <% end %>
+        </div>
+
+        <div class="row">
+          Questionnaire Name:
+        </div>
+        <div class="row pb-2 font-weight-bold">
+
+          <%= @questionnaire.name %>
+
+        </div>
+        <div class="row">
+          Questionnaire Description:
+        </div>
+        <div class="row pb-2 font-weight-bold">
+
+          <%= @questionnaire.description %>
+
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

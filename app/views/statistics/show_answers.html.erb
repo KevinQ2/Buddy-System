@@ -1,0 +1,29 @@
+<% provide(:title,"Questionnaire Statistic") %>
+<%= link_to "Back", show_questionnaires_statistic_path(@questionnaire.scheme_id),:class => "btn btn-primary" %>
+
+<h1>Questionnaire statistic</h1>
+<table class="table">
+  <tr><td colspan="3"><%= @questionnaire.name %></td></tr>
+  <tr>
+    <td>Question</td>
+    <td colspan="2">Answer</td>
+  </tr>
+
+  <% count = 0 %>
+  <% @questionnaire.questions.each do |question| %>
+    <tr>
+        <td rowspan="<%= question.options.count + 1 %>"><%= question.description %></td>
+        <td>
+          <% @answers[count].each do |option| %>
+            <tr>
+              <td><%= option[0] %></td>
+              <td><%= option[1] %></td>
+            </tr>
+          <% end %>
+        </td>
+    </tr>
+
+    <% count += 1%>
+  <% end %>
+
+</table>

@@ -1,0 +1,207 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+label {
+  display: grid !important;
+}
+
+.main-content {
+  min-height: 400px;
+}
+
+
+footer {
+  box-shadow: 0 50vh 0 50vh #343a40;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.w-70 {
+  width: 70%;
+}
+
+.ml-20 {
+  margin-left: 20px;
+}
+
+.mr-20 {
+  margin-right: 60px;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+
+.pt-30 {
+  padding-top: 30px;
+}
+
+.pb-30 {
+  padding-bottom: 30px;
+}
+
+button {
+  margin: 5px !important;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  padding-top: 60px;
+  background-color: #e6e6e6;
+}
+.navbar-nav .nav-link:hover {
+    color: white !important;
+}
+
+.answers-modal {
+  max-width: 80% !important;
+}
+
+.image {
+    transition: 0.3s ease;
+    position: relative !important;
+    width: 60px;
+    height: 60px;
+}
+
+.image:hover {
+    transition: 0.3s ease;
+    width: 70px;
+    height: 70px;
+}
+
+.active {
+    color: white !important;
+    font-weight: bold;
+}
+
+.navbar-nav .dropdown-menu {
+    background-color: #2c3338;
+ }
+
+ .dropdown-item {
+     color: grey !important;
+ }
+
+ .dropdown-item:hover {
+     transition: 0.3s ease;
+     background-color: #2c3338 !important;
+     color: white !important;
+ }
+
+nav a {
+  transition: 0.3s ease;
+  font-size: 20px;
+}
+
+.link-padding {
+    padding-right: 40px !important;
+}
+
+.account-padding {
+    padding-right: 10px !important;
+}
+
+.button-font-size {
+    font-size: 20px !important;
+}
+
+strong {
+    font-weight: normal !important;
+}
+
+a.btn {
+  margin: 10px;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.border {
+  border: 1px solid #CCC;
+}
+
+.icon-position {
+  z-index:3;
+  position:relative;
+}
+
+#onhoverfb{
+             visibility: hidden;
+         }
+#facebookicon:hover ~ #onhoverfb{
+             visibility: visible;
+         }
+
+#tooltip {
+           position: relative;
+           display: inline-block;
+           border-bottom: 1px dotted black;
+         }
+
+#tooltip #tooltiptext {
+           visibility: hidden;
+           width: 280px;
+           background-color: #555;
+           color: #fff;
+           text-align: center;
+           border-radius: 6px;
+           padding: 11px 11px;
+           position: absolute;
+           z-index: 1;
+           bottom: 125%;
+           left: 50%;
+           margin-left: -60px;
+           opacity: 0;
+           transition: opacity 0.3s;
+         }
+
+#tooltip #tooltiptext::after {
+           content: "";
+           position: absolute;
+           top: 100%;
+           left: 50%;
+           margin-left: -95px;
+           border-width: 17px;
+           border-style: solid;
+           border-color: #555 transparent transparent transparent;
+         }
+
+#tooltip:hover #tooltiptext {
+           visibility: visible;
+           opacity: 1;
+         }

@@ -1,0 +1,40 @@
+<%= error_messages_for(f.object) %>
+
+<div class="questionnaires_new">
+  <div class="container">
+    <div class="row pb-1">
+      <h2>Questionnaire Details</h2>
+    </div>
+
+
+
+    <div class="row pb-1">
+      <div class="col-sm-3">
+        Questionnaire jName:
+      </div>
+      <div class="col">
+        <%= f.text_field(:name, required: true) %>
+      </div>
+    </div>
+
+    <div class="row pb-1">
+      <div class="col-sm-3">
+        Questionnaire description:
+      </div>
+      <div class="col">
+        <%= f.text_area(:description, required: true)%>
+      </div>
+    </div>
+
+    <div class="row pb-1">
+      <div class="col-sm-3">
+        Receiver Account Number:
+      </div>
+      <div class="col">
+        <%= f.text_field(:account_number, required: true) %>
+      </div>
+    </div>
+
+
+  </div>
+</div>

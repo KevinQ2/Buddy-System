@@ -1,0 +1,25 @@
+<% provide(:title,"Delete Questionnaire") %>
+
+  <div class="message-box">
+
+      <h2>Delete questionnaire</h2>
+    </div>
+
+    <hr class="solid">
+    <div class="container px-lg-2 pt-2">
+      <%= render(:partial => 'show_questionnaire_details', :locals => {:questionnaire => @questionnaire}) %>
+
+      <p class="text-danger pt-2" align="center">Warning: This action cannot be undone!</p>
+      <div class="row justify-content-center align-items-center">
+        <div class="form-buttons p-2" align ="center">
+          <%= form_for(@questionnaire, :method => 'delete') do |f| %>
+          <%= f.submit "Delete questionnaire", class:'btn btn-danger'%>
+        </div>
+
+        <div class="form-buttons p-2" align ="center">
+          <%= link_to("Cancel", questionnaires_path, :class => "btn btn-secondary") %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>

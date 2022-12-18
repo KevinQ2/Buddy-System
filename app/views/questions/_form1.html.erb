@@ -1,0 +1,31 @@
+<table>
+        <tr>
+            <th>Questiddddddonnaire ID</th>
+            
+            
+            <% @questions.each do |question| %>
+                <%= d.select :options, question.options, {}, prompt: 'Select One', multiple: true %>
+            
+            <%end%>
+            
+            
+                <tr>
+      <th>Options</th>
+      <td><%= d.text_field(:description)%></td>
+    </tr>
+            <td>  <%= d.text_field( :questionnaire_id, value: @questionnaire.id, :readonly => true ) %></td>
+        </tr>
+    <tr>
+     
+
+   
+   
+
+    <tr>
+      <th>Match</th>
+      <td><%= d.check_box(:match)%></td>
+    </tr>
+
+
+
+  </table>

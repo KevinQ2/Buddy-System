@@ -1,0 +1,25 @@
+<%= link_to("<<Back to List", questions_path, :class => 'back-link') %>
+
+<div>
+    <h2>Show Questions</h2>
+
+    <table summary="Question detail view">
+      
+            <th>Description</th>
+            <td><%= @question.description %></td>
+        </tr>
+        <tr>
+            <th>Options</th>
+            <td><%= @question.options %></td>
+        </tr>
+        <tr>
+            <th>Match: 
+            <div id="tooltip">
+                <img src="https://friconix.com/png/fi-ctluxx-exclamation-mark-rounded.png", style="width:15px;height:16px;"> </img>
+                
+            <span id="tooltiptext"> By ticking this box, you will be matched with a student with the same answer as yours. </span> </div> 
+            </th>
+            <td><%= @question.match %></td>
+        </tr>
+    </table>
+</div>

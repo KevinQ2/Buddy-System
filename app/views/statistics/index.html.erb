@@ -1,0 +1,117 @@
+<% provide(:title,"Statistics") %>
+<h1>Statistics</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <td></td>
+      <td>Total</td>
+  </thead>
+  <tbody>
+    <%
+    statistic_master = [
+      ["Users", User.count],
+      ["Admins", Admin.count],
+      ["Schemes", Scheme.count],
+      ["Questionnaires", Questionnaire.count],
+      ["Questions", Question.count],
+      ["Answers", Answer.count],
+      ["Mailing list", MailingList.count]
+    ]
+    %>
+
+    <% statistic_master.each do |statistic| %>
+      <tr>
+        <td><%= statistic[0] %></td>
+        <td><%= statistic[1] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</br>
+
+<h3>Users</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Role</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>All</td>
+          <td><%= User.count%></td>
+      </tr>
+
+
+      <% ["mentee", "mentor", "coordinator"].each do |temp| %>
+
+          <tr>
+              <td><%= temp.capitalize %></td>
+              <td><%= EnrollIn.where(:role => temp).count %></td>
+          </tr>
+      <% end %>
+    </tbody>
+</table>
+
+</br>
+
+<h3>Admins</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Admin access</th>
+            <th>Count</th>
+        </tr>
+    </thead>
+    <tbody>
+      <%
+        permissions = Hash.new(0)
+        scheme_permissions = Hash.new(0)
+
+        Admin.all.each do |admin|
+          admin.admin_access.each do |permission|
+            permissions[permission] += 1
+          end
+
+          scheme_permissions[admin.scheme_access] += 1
+        end
+      %>
+
+      <% permissions.each do |permission| %>
+        <tr>
+          <td><%= permission[0] %></td>
+          <td><%= permission[1] %></td>
+        </tr>
+      <% end %>
+
+      <% scheme_permissions.each do |permission| %>
+        <tr>
+          <td><%= permission[0] %></td>
+          <td><%= permission[1] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+
+
+<h3>Schemes</h3>
+<table class="table">
+
+    <tr>
+        <th>Title</th>
+        <th>Start date</th>
+        <th>End date</th>
+        <th>Action</th>
+    </tr>
+    <% @schemes.each do |scheme| %>
+      <tr>
+          <td><%= scheme.title %></td>
+          <td><%= scheme.startDate %></td>
+          <td><%= scheme.endDate %></td>
+          <td><%= link_to "Check statistic", show_questionnaires_statistic_path(scheme.id), class: "btn btn-primary" %></td>
+      </tr>
+    <%end%>
+</table>

@@ -1,0 +1,54 @@
+
+            <th>Answers </th>
+        
+            <div class="container">
+            
+            <% @questions = Question.where( questionnaire_id:  (Questionnaire.find_by scheme_id: params[:scheme_id]).id) %>
+             
+             <%= d.hidden_field( :scheme_id, :value =>params[:scheme_id])%></td>
+            <% @count = "1" %>
+            <% @questions.each do |question| %>
+              <% @count =  @count  + "1" %>
+            
+          
+              <div class ="card"> 
+       <div class = "card-header">
+       
+      
+       </div>
+       
+       <div class = "card-body">
+           <p class = "card-text"> <%= question.description %>?
+           
+           <br />
+          
+          <%@tag = "col"+ @count %>
+          <%= select_tag( @tag, options_for_select((question.options)))%>
+          
+          <br /> 
+          <br /> 
+          
+          <% @match = "match_tag" + @count %>
+          <% if question.matching_up_to_user == nil %>
+              <%= check_box_tag  @match, 1 , false %>
+          <%end%>
+           
+         
+       </div>
+  
+  </div>
+  <br />
+   
+              
+              
+
+
+            <%end%>
+              </div>
+
+
+              
+
+
+
+

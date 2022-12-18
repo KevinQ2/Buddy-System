@@ -1,0 +1,58 @@
+<!-- Form fields with admin and scheme related access for admin-->
+<label>Admin access:</label>
+<%
+  access_master = [
+    "admins",
+    "coordinators",
+    "departments",
+    "matches",
+    "admin_mailings",
+    "mailing_list"
+  ]
+
+  scheme_access_master = [
+    "no schemes",
+    "assigned departments",
+    "assigned schemes",
+    "assigned departments and schemes",
+    "all schemes"
+  ]
+%>
+
+<% access_master.each do |access| %>
+  <%
+    if @admin.admin_access.include?access
+      check = true
+    else
+      check = false
+    end
+  %>
+
+  <%= access %>
+
+  <%= check_box_tag 'access[]', access, check %>
+  </br>
+<% end %>
+
+</br>
+
+Scheme access:
+<%= f.select(:scheme_access, scheme_access_master) %>
+<br>
+<br>
+<table class="table text-center w-80">
+  <thead>
+    <tr>
+      <th>Department</th>
+      <th>Scheme</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= collection_check_boxes(:admin, :department_ids, Department.all, :id, :name) %></td>
+      <td><%= collection_check_boxes(:admin, :scheme_ids, Scheme.all, :id, :title) %> </td>
+    </tr>
+
+  </tbody>
+</table>

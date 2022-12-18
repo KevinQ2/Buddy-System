@@ -1,0 +1,15 @@
+<% provide(:title,"User Verification") %>
+<div class="row justify-content-center text-center">
+  <div class="col-sm-4">
+    <%= bootstrap_form_with(class: 'form-signin', url: '/user/code', scope: :session, local: true) do |f| %>
+      <h2 class="h2 mb-4 font-weight-normal">Enter Verification Code</h2>
+
+      <%= f.text_field :code, class:"form-control" %>
+      <%= f.submit "Submit Code", class: 'btn btn-primary' %>
+      
+    <% end %>
+    <br>
+    <%= link_to "Request New Code", '/user/request-code' , class: "btn btn-primary" %>
+    <%= link_to "Home page", "/", class: "btn btn-primary" %>
+  </div>
+</div>

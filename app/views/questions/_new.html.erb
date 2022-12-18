@@ -1,0 +1,33 @@
+
+
+<div class="questions new">
+   <div class="row pb-1">
+      <h2>Create Question</h2>
+   </div>
+
+
+
+         <%= form_for(@question, :method => 'post') do |f| %>
+      <div class="container">
+         <%= render(:partial => 'questions/form', :locals => {:f => f}) %>
+
+
+
+
+    <div class="form-buttons">
+        <%= f.submit("Assign Question") %>
+
+    </div>
+
+      </div>
+
+    <% end %>
+
+
+
+
+
+
+
+
+</div>

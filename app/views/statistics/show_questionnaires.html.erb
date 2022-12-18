@@ -1,0 +1,17 @@
+<% provide(:title,"Questionnaires") %>
+<%= link_to "Back", statistics_path,:class => "btn btn-primary" %>
+
+<h1>Questionnaires</h1>
+
+<table class="table">
+  <tr>
+      <th>Title</th>
+      <th>Action</th>
+  </tr>
+  <% @questionnaires.each do |questionnaire| %>
+  <tr>
+      <td><%= questionnaire.name %></td>
+      <td><%= link_to "Check statistic", show_answers_statistic_path(questionnaire.id), class: "btn btn-primary" %></td>
+  </tr>
+  <%end%>
+</table>

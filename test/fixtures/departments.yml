@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+math:
+  id: 1
+  name: Maths
+
+compsci:
+  id: 2
+  name: Computer science

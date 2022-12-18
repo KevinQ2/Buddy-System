@@ -1,0 +1,32 @@
+<% provide(:title,"Enroll Mentor") %>
+<div class="row justify-content-center text-center">
+    <div class="col-sm-6 text-center">
+
+        <h1><%= @scheme.title%></h1>
+        <% if @user_answer == nil  %>
+            <div class="row justify-content-center">
+                <div class="col-sm-8 text-center">
+
+                    <h3>Scheme description</h3>
+                    <p class="text-break"><%= @scheme.description %></p>
+                    <h3>Code of Conduct</h3>
+                    <p class="text-break"><%= @scheme.codeOfConduct %></p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#answer_questions">
+                        Agree
+                    </button>
+                    <%= render(:partial => "/enroll_ins/answer_modal") %>
+                    
+                </div>
+            </div>  
+        <% else %>
+            <h1 style="color:red;">Press Enroll to finish registration</h1>
+            <%= form_for(@enroll_in, url:enroll_mentor_path, :method => 'post') do |f| %>
+                <h4>How many mentees do you prefer?</h4>
+                <%= f.label :mentees_number %>
+                <%= f.number_field :mentees_number, required: true, min: 1, max: 10 %>
+            <%= f.submit "Enroll", class: "btn btn-primary" %>
+            <% end %>
+         <% end %>
+
+    </div>
+</div>

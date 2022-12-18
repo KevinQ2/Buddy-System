@@ -1,0 +1,46 @@
+<% provide(:title,"Admins") %>
+
+<!-- List of all admins in the database -->
+
+<div class="container ">
+        <div class="row">
+            <h2 class="pr-2 pr-sm-2 pr-md-2 pr-lg-2">Admins</h2>
+          </div>
+        <table  class="table table-hover table-striped">
+          
+          
+          <div class="row pb-3">
+          <%= link_to("Add New Admin", new_admin_path, :class => "btn btn-outline-dark action new") %>
+          </div>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- Show a dashed record if none exists -->
+                <% if(@admins.length == 0) %>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+
+                <% else %>
+                    <% @admins.each do |admin| %>
+                        <tr style="transform: rotate(0);">
+                            <td><%= admin.username %></td>
+                            <td>
+                                <a href="<%= admin_path(admin) %>"><button type="button" class="btn btn-primary">Show</button></a>
+                                <a href="<%= edit_admin_path(admin) %>"><button type="button" class="btn btn-primary">Edit</button></a>
+                                <a href="<%= delete_admin_path(admin) %>"><button type="button" class="btn btn-primary">Delete</button></a>
+                            </td>
+                        </tr>
+                    <% end %>
+                <% end %>
+            </tbody>
+        </table>
+
+</div>

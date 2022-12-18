@@ -1,0 +1,17 @@
+<% provide(:title,"Delete Answers") %>
+<%= link_to("<<Back to List", answers_path, :class => 'back-link') %>
+
+<div class="answers delete">
+    <h2>Delete answer</h2>
+
+    <%= form_for(@answer, :url => answer_path(@answer), :method => 'delete') do |f| %>
+
+
+    <p>Are you sure you want to permanently delete theis answer?</p>
+    <p><%= @answer.user_answers %></p>
+
+    <div class="form-buttons">
+      <%= f.submit("Delete answer") %>
+    </div>
+    <% end %>
+</div>

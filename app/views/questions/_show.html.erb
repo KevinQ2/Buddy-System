@@ -1,0 +1,20 @@
+<%= link_to("<<Back to List", questions_path, :class => 'back-link') %>
+
+<div>
+    <h2>Show Questions</h2>
+
+    <table summary="Question detail view">
+
+            <th>Description</th>
+            <td><%= @question.description %></td>
+        </tr>
+        <tr>
+            <th>Options</th>
+            <td><%= @question.options %></td>
+        </tr>
+        <tr>
+            <th>Match</th>
+            <td><%= @question.match %></td>
+        </tr>
+    </table>
+</div>

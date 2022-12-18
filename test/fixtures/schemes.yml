@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+mathone:
+  id: 1
+  title: Math scheme 1
+  description: Scheme 1 description
+  codeOfConduct: This is a code of conduct for scheme 1. Sample text.
+  startDate: <%= Date.new(2022,1,1) %>
+  endDate: <%= Date.new(2022,6,1) %>
+
+mathone:
+  id: 2
+  title: Math scheme 2
+  description: Scheme 2 description
+  codeOfConduct: This is a code of conduct for scheme 2. Sample text.
+  startDate: <%= Date.new(2022,6,2) %>
+  endDate: <%= Date.new(2022,12,28) %>
+
+compscione:
+  id: 3
+  title: Computer science scheme 1
+  description: Scheme 1 description
+  codeOfConduct: This is a code of conduct for scheme 1. Sample text.
+  startDate: <%= Date.new(2022,6,1) %>
+  endDate: <%= Date.new(2023,12,28) %>
+
+compscitwo:
+  id: 4
+  title: Computer science scheme 2
+  description: Scheme 2 description
+  codeOfConduct: This is a code of conduct for scheme 2. Sample text.
+  startDate: <%= Date.new(2023,1,1) %>
+  endDate: <%= Date.new(2023,6,28) %>

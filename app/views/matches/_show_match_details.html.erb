@@ -1,0 +1,64 @@
+<div class="matches_show">
+  <div class="container">
+
+    <div class="container px-lg-2">
+      <div class="col mx-lg-n2">
+
+
+        <div class="row">
+          Date:
+        </div>
+        <div class="row pb-2 font-weight-bold">
+          <%= @match.created_at %>
+        </div>
+
+        <div class="row">
+          Scheme:
+        </div>
+        <div class="row pb-2 font-weight-bold">
+
+             <%= @match.scheme.title %>
+
+        </div>
+
+
+        <div class="row">
+          Mentor Name:
+        </div>
+        <div class="row pb-2 font-weight-bold">
+        
+          <% if current_user.id == @match.mentor_id %> 
+              <p> You </p>
+            
+          <%else %>
+              
+             <%= @match.mentor.first_name %> <%= @match.mentor.last_name %>
+          
+          <%end%>
+          
+            
+
+        </div>
+
+        <div class="row">
+          Mentee Name:
+        </div>
+        <div class="row pb-2 font-weight-bold">
+          <% if current_user.id == @match.mentee_id %> 
+              <p> You </p>
+            
+          <%else %>
+              
+             <%= @match.mentee.first_name %> <%= @match.mentee.last_name %>
+          
+          <%end%>
+       
+
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

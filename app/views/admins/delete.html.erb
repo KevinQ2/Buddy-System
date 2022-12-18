@@ -1,0 +1,24 @@
+<% provide(:title,"Delete Admin") %>
+<%= link_to "Back", admins_path, :class => "btn btn-primary" %>
+
+<div class="row text-center">
+  <div class="col">
+    <%= form_for(@admin, :url=> delete_admin_path(@admin.id), :method => 'delete') do |f| %>
+
+    <h1>Are you sure you want to delete this admin?</h1>
+
+    <p>Username: <%= @admin.username %> </p>
+    <p>Admin permissions: </p>
+    <% @admin.admin_access.each do |access| %>
+      <p>-<%= access %></p>
+    <% end %>
+
+    <!-- Confirm deletion-->
+    <%= f.submit("Yes") %>
+
+    <!--Cancel deletion-->
+    <a href="<%= admins_path %>"><button type="button" class="btn btn-primary">No</button></a>
+  </div>
+</div>
+<br>
+<% end %>

@@ -1,0 +1,3 @@
+module AdminMailingsHelper
+
+end

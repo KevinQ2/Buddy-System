@@ -1,0 +1,43 @@
+
+<div class="questionnaires_new">
+  <div class="container">
+    <% if @admin_schemes != nil %>
+    <div class="row pb-1">
+      <div class="col-sm-3">
+        Scheme Name:
+      </div>
+      <div class="col">
+        
+        <%= n.select(:scheme_id, @admin_schemes.collect { |scheme| [scheme.title, scheme.id]} , selected: params[:id])%>
+      </div>
+    </div>
+    <% end%>
+    
+    <div class="row pb-1">
+      <div class="col-sm-3">
+        Questionnaires Name:
+      </div>
+      <div class="col">
+        <%= n.text_field(:name, required: true) %>
+      </div>
+    </div>
+
+    <div class="row pb-1">
+      <div class="col-sm-3">
+        Questionnaires Description:
+      </div>
+      <div class="col">
+        <%= n.text_field(:description, required: true)%>
+      </div>
+    </div>
+
+   
+
+    <div class="row justify-content-center align-items-center">
+      <div class="form-buttons p-2" align="center">
+        <%= n.submit("Update", class:"btn btn-success") %>
+        
+      </div>
+    </div>
+  </div>
+</div>

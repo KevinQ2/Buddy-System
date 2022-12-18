@@ -1,0 +1,16 @@
+<% provide(:title,"Delete Department") %>
+<%= link_to "Back", departments_path, :class => "btn btn-primary" %>
+
+<%= form_for(@department, :url=> delete_department_path(@department.id), :method => 'delete') do |f| %>
+
+<h1>Are you sure you want to delete this department?</h1>
+
+<p>Name: <%= @department.name %> </p>
+
+<!-- Confirm deletion-->
+<%= f.submit("Yes") %>
+
+<!--Cancel deletion-->
+<a href="<%= departments_path %>"><button type="button" class="btn btn-primary">No</button></a>
+
+<% end %>

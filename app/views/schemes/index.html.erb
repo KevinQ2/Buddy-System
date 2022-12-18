@@ -1,0 +1,32 @@
+<% provide(:title,"Schemes") %>
+       <div class="row">
+            <h2 class="pr-2 pr-sm-2 pr-md-2 pr-lg-2">Schemes</h2>
+          </div>
+        <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+                <th>Department</th>
+                <th>Title</th>
+                <th>Start date</th>
+                <th>End date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @schemes.each do |scheme| %>
+            <tr style="transform: rotate(0);">
+                <td><%= scheme.department.name %></td>
+                <td><%= scheme.title %></td>
+                <td><%= scheme.startDate %></td>
+                <td><%= scheme.endDate %></td>
+                <td><%= link_to "Manage scheme", scheme_path(scheme.id), class: "btn btn-primary" %></td>
+                <td><%= link_to "Edit scheme",  edit_scheme_path(scheme.id), class: "btn btn-primary" %></td>
+                <td><%= link_to "Delete Scheme", delete_scheme_path(scheme.id), class: "btn btn-primary" %></td>
+            </tr>
+            <%end%>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-sm-12">
+                <%=link_to "Create new scheme", new_scheme_path, class: "btn btn-primary" %>
+            </div>
+        </div>

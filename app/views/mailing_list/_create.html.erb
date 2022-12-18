@@ -1,0 +1,25 @@
+<div class="modal fade" id="addSingleEmail" tabindex="-1" role="dialog" aria-labelledby="addSingleEmailTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addSingleEmailTitle">Add single email</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_for(@email, url: mailing_list_index_path, method: "post") do |email| %>
+            <div class="form-group">
+                <%= email.label :email%>
+                <%= email.text_field :email %>
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= email.submit "Add email", class: "btn btn-outline-success" %>
+        <% end %>
+      </div>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+
+
+<head>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+</head>
+<body>
+<% provide(:title,"Answers") %>
+
+    <div class="container">
+      <div class="row">
+        <h2 class="pr-2 pr-sm-2 pr-md-2 pr-lg-2">Answers</h2>
+      </div>
+
+      <div class="row pb-3">
+
+
+      </div>
+
+
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Questionnaire Name</th>
+            <th scope="col">Answer</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <% @answers.each do |answer| %>
+          <div class ="row">
+            <tr style="transform: rotate(0);">
+              <th id="row_number" scope="row"> <%= answer.created_at%> </th>
+              <td>
+
+            user naem
+
+              </td>
+              <td>
+
+
+               q name
+
+
+              </td>
+              <td>
+
+
+               <%= answer.user_answers %>
+
+
+              </td>
+
+
+              <td scope="row" >
+
+
+
+                <%= link_to(edit_answers_answer_path(answer), :class => "action edit icon-position") do %>
+                <span data-toggle="tooltip" data-placement="top" title="Edit">
+                  <i class="far fa-edit"></i>
+                </span>
+                <% end %>
+
+
+
+
+              </td>
+            </tr>
+          </div>
+          <% end %>
+
+        </tbody>
+      </table>
+    </div>
+
+   </body>

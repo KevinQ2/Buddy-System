@@ -1,0 +1,17 @@
+<% provide(:title,"Edit profile") %>
+<%= link_to "Back", user_profile_path, class: "btn btn-primary" %>
+
+<%= render('error_user') %>
+
+<h1>Edit Profile</h1>
+
+<%= form_for(@user, :url => edit_user_profile_path) do |f| %>
+
+<!-- Partial form with input fields -->
+<%= render(:partial=> 'edit_profile_form', :locals => {:f => f}) %>
+
+</br></br>
+
+<%= f.submit("Update info") %>
+
+<% end %>
